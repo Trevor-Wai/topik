@@ -9,4 +9,4 @@ dist/
 build/
 
 # VS Code settings
-.vscode/
+.vscode/.DS_Store
