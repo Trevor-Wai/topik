@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topik Level 1 Vocab Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+        #answers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 400px; margin: 20px auto; }
+        button {
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 20px;
+            background-color: rgba(200, 200, 200, 0.4);
+            color: black;
+            border: none;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
+        }
+        button:hover { transform: translateY(-2px); box-shadow: 4px 4px 12px rgba(0,0,0,0.3); }
+        .correct { background-color: lightgreen !important; color: black; }
+        .wrong { background-color: lightcoral !important; color: black; }
+        #question { font-size: 40px; font-weight: bold; margin: 20px; }
+        #score { margin-top: 20px; font-size: 18px; }
+        #nextBtn, #downloadBtn, #toggleBtn { height: 50px; margin-top: 20px; padding: 0 20px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2>Level 1 Korean Vocabulary</h2>
+    <button id="toggleBtn">Chinese ⇌ Korean</button>
+    <div id="question"></div>
+    <div id="answers"></div>
+    <div id="score">Answered: 0 | Score: 0% | Streak: 0</div>
+    <button id="nextBtn">Next</button>
+    <button id="downloadBtn">Download Results</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        let vocabList = [];
+        let quizLog = [];
+        let currentQuestion;
+        let correctStreak = 0;
+        let koreanOnTop = true; // true = Korean question, false = Chinese question
+
+        async function loadVocab() {
+            try {
+                const response = await fetch('vocab.json');
+                vocabList = await response.json();
+                generateQuestion();
+            } catch (error) {
+                console.error('Error loading vocab.json:', error);
+            }
+        }
+
+        function generateQuestion() {
+            if (vocabList.length === 0) return;
+            const randomIndex = Math.floor(Math.random() * vocabList.length);
+            currentQuestion = vocabList[randomIndex];
+
+            const questionText = koreanOnTop ? currentQuestion.korean : currentQuestion.chinese;
+            const correctAnswer = koreanOnTop ? currentQuestion.chinese : currentQuestion.korean;
+
+            const answers = new Set([correctAnswer]);
+            while (answers.size < 4) {
+                const rand = koreanOnTop ? vocabList[Math.floor(Math.random() * vocabList.length)].chinese : vocabList[Math.floor(Math.random() * vocabList.length)].korean;
+                answers.add(rand);
+            }
+
+            const answerArray = Array.from(answers).sort(() => Math.random() - 0.5);
+
+            document.getElementById("question").innerText = questionText;
+            const answersDiv = document.getElementById("answers");
+            answersDiv.innerHTML = "";
+
+            answerArray.forEach(answer => {
+                const btn = document.createElement("button");
+                btn.textContent = answer;
+                btn.onclick = () => checkAnswer(btn, answer, correctAnswer);
+                answersDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(button, selectedAnswer, correctAnswer) {
+            const correct = selectedAnswer === correctAnswer;
+            [...document.querySelectorAll('#answers button')].forEach(btn => btn.disabled = true);
+            button.classList.add(correct ? 'correct' : 'wrong');
+            if (!correct) {
+                [...document.querySelectorAll('#answers button')].find(btn => btn.textContent === correctAnswer).classList.add('correct');
+            }
+            correct ? correctStreak++ : correctStreak = 0;
+
+            quizLog.push({
+                question: koreanOnTop ? currentQuestion.korean : currentQuestion.chinese,
+                options: [...document.querySelectorAll('#answers button')].map(btn => btn.textContent),
+                correctAnswer,
+                selectedAnswer,
+                result: correct ? 'Correct' : 'Wrong'
+            });
+
+            updateScore();
+        }
+
+        function updateScore() {
+            const totalAnswered = quizLog.length;
+            const correctCount = quizLog.filter(q => q.result === 'Correct').length;
+            const percent = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
+            document.getElementById('score').innerText = `Answered: ${totalAnswered} | Score: ${percent}% | Streak: ${correctStreak}`;
+        }
+
+        function downloadResults() {
+            const wb = XLSX.utils.book_new();
+            const ws_data = [['Question','Option1','Option2','Option3','Option4','CorrectAnswer','SelectedAnswer','Result']];
+            quizLog.forEach(q => ws_data.push([q.question, ...q.options, q.correctAnswer, q.selectedAnswer, q.result]));
+            const ws = XLSX.utils.aoa_to_sheet(ws_data);
+            XLSX.utils.book_append_sheet(wb, ws, 'Results');
+            XLSX.writeFile(wb, 'quiz_results.xlsx');
+        }
+
+        document.getElementById("nextBtn").onclick = generateQuestion;
+        document.getElementById("downloadBtn").onclick = downloadResults;
+        document.getElementById("toggleBtn").onclick = () => { koreanOnTop = !koreanOnTop; generateQuestion(); };
+
+        loadVocab();
+    </script>
+</body>
+</html>
