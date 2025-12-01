@@ -1,0 +1,4 @@
+python3 csv_to_json.py
+git add .
+git commit -m "Updated vocab list"
+git push
