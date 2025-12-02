@@ -1377,7 +1377,7 @@
   },
   {
     "korean": "놀라다",
-    "chinese": "奇事"
+    "chinese": "嚇一條"
   },
   {
     "korean": "놀이",
@@ -3441,7 +3441,7 @@
   },
   {
     "korean": "설날",
-    "chinese": "韓新年"
+    "chinese": "農曆新年"
   },
   {
     "korean": "설렁탕",
@@ -3461,7 +3461,7 @@
   },
   {
     "korean": "섭섭하다",
-    "chinese": "真令人難過"
+    "chinese": "難過"
   },
   {
     "korean": "성",
@@ -3469,19 +3469,19 @@
   },
   {
     "korean": "성격",
-    "chinese": "字"
+    "chinese": "性格"
   },
   {
     "korean": "성공",
-    "chinese": "勝"
+    "chinese": "成功"
   },
   {
     "korean": "성적",
-    "chinese": "結果"
+    "chinese": "成績"
   },
   {
     "korean": "성함",
-    "chinese": "名字"
+    "chinese": "姓名"
   },
   {
     "korean": "세",
@@ -3501,11 +3501,11 @@
   },
   {
     "korean": "세배",
-    "chinese": "三次"
+    "chinese": "三倍"
   },
   {
     "korean": "세상",
-    "chinese": "世界"
+    "chinese": "世上"
   },
   {
     "korean": "세수",
@@ -3593,7 +3593,7 @@
   },
   {
     "korean": "소화제",
-    "chinese": "消化醫學"
+    "chinese": "消化藥"
   },
   {
     "korean": "속",
@@ -3685,7 +3685,7 @@
   },
   {
     "korean": "수첩",
-    "chinese": "簿"
+    "chinese": "筆記簿"
   },
   {
     "korean": "숙제",
@@ -4261,11 +4261,11 @@
   },
   {
     "korean": "알리다",
-    "chinese": "告"
+    "chinese": "告訴"
   },
   {
     "korean": "알맞다",
-    "chinese": "還不錯"
+    "chinese": "符合"
   },
   {
     "korean": "알아보다",
@@ -4509,7 +4509,7 @@
   },
   {
     "korean": "여기저기",
-    "chinese": "這裡那裡"
+    "chinese": "到處"
   },
   {
     "korean": "여덟",
@@ -5185,7 +5185,7 @@
   },
   {
     "korean": "이런",
-    "chinese": "天哪"
+    "chinese": "這種"
   },
   {
     "korean": "이렇다",
@@ -6909,7 +6909,7 @@
   },
   {
     "korean": "편찮다",
-    "chinese": "煩"
+    "chinese": "不舒服 "
   },
   {
     "korean": "편하다",
@@ -6917,7 +6917,7 @@
   },
   {
     "korean": "평소",
-    "chinese": "老樣子"
+    "chinese": "平時"
   },
   {
     "korean": "평일",
@@ -6929,7 +6929,7 @@
   },
   {
     "korean": "포장",
-    "chinese": "鋪路"
+    "chinese": "包裝"
   },
   {
     "korean": "표",
@@ -6941,7 +6941,7 @@
   },
   {
     "korean": "푹",
-    "chinese": "上癮"
+    "chinese": "沉/熟"
   },
   {
     "korean": "풀다",
@@ -6953,7 +6953,7 @@
   },
   {
     "korean": "프라이팬",
-    "chinese": "鍋"
+    "chinese": "平底鍋"
   },
   {
     "korean": "프랑스",
@@ -6973,7 +6973,7 @@
   },
   {
     "korean": "피다",
-    "chinese": "花"
+    "chinese": "盛開"
   },
   {
     "korean": "피아노",
@@ -6981,7 +6981,7 @@
   },
   {
     "korean": "피우다",
-    "chinese": "煙"
+    "chinese": "盛開"
   },
   {
     "korean": "피자",
@@ -6989,7 +6989,7 @@
   },
   {
     "korean": "필요",
-    "chinese": "需"
+    "chinese": "需要"
   },
   {
     "korean": "필통",
@@ -7009,11 +7009,11 @@
   },
   {
     "korean": "하다",
-    "chinese": "去做吧"
+    "chinese": "做"
   },
   {
-    "korean": "",
-    "chinese": ""
+    "korean": "하다",
+    "chinese": "做"
   },
   {
     "korean": "하루",
@@ -7037,7 +7037,7 @@
   },
   {
     "korean": "하지만",
-    "chinese": "卻"
+    "chinese": "但是"
   },
   {
     "korean": "학교",
@@ -7069,7 +7069,7 @@
   },
   {
     "korean": "한가하다",
-    "chinese": "怠"
+    "chinese": "清閒"
   },
   {
     "korean": "한강",
@@ -7109,11 +7109,11 @@
   },
   {
     "korean": "한잔",
-    "chinese": "杯子"
+    "chinese": "一杯"
   },
   {
     "korean": "한턱",
-    "chinese": "一邊下巴"
+    "chinese": "請客"
   },
   {
     "korean": "할머니",
@@ -7165,7 +7165,7 @@
   },
   {
     "korean": "햇빛",
-    "chinese": "暉"
+    "chinese": "陽光"
   },
   {
     "korean": "행동",
@@ -7213,7 +7213,7 @@
   },
   {
     "korean": "호",
-    "chinese": "弧"
+    "chinese": "號"
   },
   {
     "korean": "호랑이",
@@ -7229,11 +7229,11 @@
   },
   {
     "korean": "혹시",
-    "chinese": "可"
+    "chinese": "如果"
   },
   {
     "korean": "혼자",
-    "chinese": "獨"
+    "chinese": "獨自"
   },
   {
     "korean": "홍차",
@@ -7269,7 +7269,7 @@
   },
   {
     "korean": "화장품",
-    "chinese": "胭"
+    "chinese": "化妝品"
   },
   {
     "korean": "환영",
@@ -7285,11 +7285,11 @@
   },
   {
     "korean": "활발히",
-    "chinese": "積極參與"
+    "chinese": "活躍"
   },
   {
     "korean": "회",
-    "chinese": "石灰"
+    "chinese": "回"
   },
   {
     "korean": "회사",
@@ -7305,7 +7305,7 @@
   },
   {
     "korean": "회원",
-    "chinese": "員"
+    "chinese": "會員"
   },
   {
     "korean": "회의",
@@ -7321,19 +7321,19 @@
   },
   {
     "korean": "후배",
-    "chinese": "䩏"
+    "chinese": "後輩"
   },
   {
     "korean": "훌륭하다",
-    "chinese": "妙"
+    "chinese": "卓越"
   },
   {
     "korean": "훨씬",
-    "chinese": "多"
+    "chinese": "更加"
   },
   {
     "korean": "휴가",
-    "chinese": "假"
+    "chinese": "休假"
   },
   {
     "korean": "휴게실",
@@ -7361,23 +7361,23 @@
   },
   {
     "korean": "흐리다",
-    "chinese": "䨯"
+    "chinese": "渾濁"
   },
   {
     "korean": "흔들다",
-    "chinese": "搖"
+    "chinese": "搖動"
   },
   {
     "korean": "흘리다",
-    "chinese": "哭"
+    "chinese": "流"
   },
   {
     "korean": "희망",
-    "chinese": "望"
+    "chinese": "希望"
   },
   {
     "korean": "흰색",
-    "chinese": "白"
+    "chinese": "白色"
   },
   {
     "korean": "힘",
@@ -7385,6 +7385,6 @@
   },
   {
     "korean": "힘들다",
-    "chinese": "硬"
+    "chinese": "困難"
   }
 ]
