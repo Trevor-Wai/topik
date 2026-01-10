@@ -189,6 +189,10 @@ function evaluateAnswer(button, selectedAnswer, correctAnswer) {
             .classList.add("correct");
     }
 
+    if (!koreanOnTop) {
+      speakKorean(button.dataset.original);
+    }
+
     quizLog.push({
         question1: koreanOnTop ? currentQuestion.korean : currentQuestion.chinese,
         correctAnswer,
@@ -218,6 +222,7 @@ function toggleFlip(button) {
     if (!entry) return;
 
     button.dataset.flipped = "true";
+    speakKorean(entry.korean); //pronounce
 
     // KOREAN QUESTION MODE – show Korean + pronunciation button
     if (koreanOnTop) {
@@ -225,14 +230,13 @@ function toggleFlip(button) {
             <div style="font-size:20px;">${entry.korean}
             </div>
         `;            
-        speakKorean(entry.korean); //pronounce
+
         return;
     }
 
     // CHINESE QUESTION MODE – show translation + explanation | pos
     const explain = entry.explanation || "";
     const pos = entry.pos || "";
-    speakKorean(entry.korean);
 
     button.innerHTML = `
         <div style="font-size:20px;">${entry.chinese}</div>
