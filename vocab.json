@@ -37,7 +37,7 @@
   },
   {
     "korean": "가리키다",
-    "chinese": "指 (zhǐ)"
+    "chinese": "指出"
   },
   {
     "korean": "가방",
@@ -353,7 +353,7 @@
   },
   {
     "korean": "결혼식",
-    "chinese": "婚禮，結婚慶典"
+    "chinese": "婚禮"
   },
   {
     "korean": "경기",
@@ -641,7 +641,7 @@
   },
   {
     "korean": "군인",
-    "chinese": "士兵，軍人，戰士"
+    "chinese": "士兵"
   },
   {
     "korean": "굳다",
@@ -1165,7 +1165,7 @@
   },
   {
     "korean": "남기다",
-    "chinese": "剩飯 (shèng fàn)"
+    "chinese": "剩下"
   },
   {
     "korean": "남녀",
@@ -1317,7 +1317,7 @@
   },
   {
     "korean": "네",
-    "chinese": "是的 (是) / 對 (對) / 嗯 (嗯)"
+    "chinese": "是的"
   },
   {
     "korean": "넥타이",
@@ -1349,7 +1349,7 @@
   },
   {
     "korean": "노래방",
-    "chinese": "卡拉 OK 酒吧"
+    "chinese": "卡拉 OK 房"
   },
   {
     "korean": "노력",
@@ -1413,7 +1413,7 @@
   },
   {
     "korean": "누나",
-    "chinese": "堂姊 (Táng zǐ)"
+    "chinese": "姐姐"
   },
   {
     "korean": "누르다",
@@ -1477,7 +1477,7 @@
   },
   {
     "korean": "다녀오다",
-    "chinese": "去過/回來 (go and come back, referring to having gone to school and returned)"
+    "chinese": "去過回來 "
   },
   {
     "korean": "다니다",
@@ -1561,7 +1561,7 @@
   },
   {
     "korean": "닫다",
-    "chinese": "（使）關，合，關閉"
+    "chinese": "（使）關閉"
   },
   {
     "korean": "달",
@@ -1693,7 +1693,7 @@
   },
   {
     "korean": "데려가다",
-    "chinese": "帶 (dài) or 領 (lǐng)"
+    "chinese": "帶走"
   },
   {
     "korean": "데려오다",
@@ -1845,7 +1845,7 @@
   },
   {
     "korean": "두다",
-    "chinese": "放 (fàng)"
+    "chinese": "放置"
   },
   {
     "korean": "두부",
@@ -2541,7 +2541,7 @@
   },
   {
     "korean": "바뀌다",
-    "chinese": "換成新的 (huànchéng xīnde)"
+    "chinese": "換成新的"
   },
   {
     "korean": "바나나",
@@ -2985,7 +2985,7 @@
   },
   {
     "korean": "분식",
-    "chinese": "麵食 (miànshí)"
+    "chinese": "粉食"
   },
   {
     "korean": "분위기",
@@ -3341,7 +3341,7 @@
   },
   {
     "korean": "생신",
-    "chinese": "生日 (shēngrì)"
+    "chinese": "生辰"
   },
   {
     "korean": "생일",
@@ -3365,7 +3365,7 @@
   },
   {
     "korean": "서두르다",
-    "chinese": "倉促 (Cāng cū)"
+    "chinese": "倉促"
   },
   {
     "korean": "서랍",
@@ -3497,7 +3497,7 @@
   },
   {
     "korean": "세다",
-    "chinese": "強 (qiáng)"
+    "chinese": "強"
   },
   {
     "korean": "세배",
@@ -3777,7 +3777,7 @@
   },
   {
     "korean": "스파게티",
-    "chinese": "義大利式細麵條"
+    "chinese": "義大利麵"
   },
   {
     "korean": "스포츠",
@@ -3949,7 +3949,7 @@
   },
   {
     "korean": "싣다",
-    "chinese": "載；馱；登載"
+    "chinese": "載"
   },
   {
     "korean": "실례",
@@ -4053,7 +4053,7 @@
   },
   {
     "korean": "쓰레기통",
-    "chinese": "（常置於室外的）垃圾箱，垃圾桶"
+    "chinese": "垃圾桶"
   },
   {
     "korean": "씨",
@@ -4101,7 +4101,7 @@
   },
   {
     "korean": "아니요",
-    "chinese": "不是 (bù shì)"
+    "chinese": "不是"
   },
   {
     "korean": "아들",
@@ -4177,7 +4177,7 @@
   },
   {
     "korean": "아직",
-    "chinese": "還 (Hái)"
+    "chinese": "還"
   },
   {
     "korean": "아침",
@@ -4473,7 +4473,7 @@
   },
   {
     "korean": "얼마나",
-    "chinese": "How much?"
+    "chinese": "多少"
   },
   {
     "korean": "얼음",
@@ -4489,7 +4489,7 @@
   },
   {
     "korean": "엉덩이",
-    "chinese": "屁股（的一邊）"
+    "chinese": "屁股"
   },
   {
     "korean": "에어컨",
@@ -4537,7 +4537,7 @@
   },
   {
     "korean": "여보세요",
-    "chinese": "喂 (Wèi)"
+    "chinese": "喂"
   },
   {
     "korean": "여섯",
@@ -5373,7 +5373,7 @@
   },
   {
     "korean": "일어서다",
-    "chinese": "起 (qǐ)"
+    "chinese": "站起"
   },
   {
     "korean": "일요일",
@@ -5549,7 +5549,7 @@
   },
   {
     "korean": "잘되다",
-    "chinese": "運作良好 (or 順利)"
+    "chinese": "運作良好/順利"
   },
   {
     "korean": "잘못",
@@ -5593,7 +5593,7 @@
   },
   {
     "korean": "잡수시다",
-    "chinese": "吃 (chī)"
+    "chinese": "吃"
   },
   {
     "korean": "잡지",
@@ -5705,7 +5705,7 @@
   },
   {
     "korean": "저희",
-    "chinese": "我們 (Wǒmen)"
+    "chinese": "我們"
   },
   {
     "korean": "적다",
@@ -5813,7 +5813,7 @@
   },
   {
     "korean": "정류장",
-    "chinese": "公車站，公車停靠站"
+    "chinese": "公車站"
   },
   {
     "korean": "정리",
@@ -5953,7 +5953,7 @@
   },
   {
     "korean": "주무시다",
-    "chinese": "睡覺 (zhuì jué)"
+    "chinese": "睡覺"
   },
   {
     "korean": "주문",
@@ -6233,7 +6233,7 @@
   },
   {
     "korean": "쪽",
-    "chinese": "方 (or 邊)"
+    "chinese": "方/邊"
   },
   {
     "korean": "찌개",
@@ -6313,15 +6313,15 @@
   },
   {
     "korean": "찾아가다",
-    "chinese": "去 (qù)"
+    "chinese": "去找"
   },
   {
     "korean": "찾아보다",
-    "chinese": "查找"
+    "chinese": "找找看"
   },
   {
     "korean": "찾아오다",
-    "chinese": "來訪"
+    "chinese": "来找"
   },
   {
     "korean": "채소",
@@ -6809,7 +6809,7 @@
   },
   {
     "korean": "튀기다",
-    "chinese": "油炸;油煎;油炒"
+    "chinese": "油炸"
   },
   {
     "korean": "튀김",
