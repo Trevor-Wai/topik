@@ -1,127 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Topik Level 1 Vocab Quiz</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
-        #answers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 400px; margin: 20px auto; }
-        button {
-            padding: 15px;
-            cursor: pointer;
-            border-radius: 8px;
-            font-size: 20px;
-            background-color: rgba(200, 200, 200, 0.4);
-            color: black;
-            border: none;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-            transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
-        }
-        button:hover { transform: translateY(-2px); box-shadow: 4px 4px 12px rgba(0,0,0,0.3); }
-        .correct { background-color: lightgreen !important; color: black; }
-        .wrong { background-color: lightcoral !important; color: black; }
-        #question { font-size: 40px; font-weight: bold; margin: 20px; }
-        #score { margin-top: 20px; font-size: 18px; }
-        #nextBtn, #downloadBtn, #toggleBtn { height: 50px; margin-top: 20px; padding: 0 20px; font-size: 16px; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Topik Level 1 Vocab Quiz</title>
+
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+
+    #answers {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        max-width: 400px;
+        margin: 20px auto;
+    }
+
+    button {
+        padding: 15px;
+        cursor: pointer;
+        border-radius: 8px;
+        font-size: 20px;
+        background-color: rgba(200, 200, 200, 0.4);
+        color: black;
+        border: none;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
+        /* min-height: 90px; */
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 4px 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .correct { background-color: lightgreen !important; color: black; }
+    .wrong { background-color: lightcoral !important; color: black; }
+
+    #question1 { font-size: 40px; margin-top: 20px; }
+    /* #question2 { font-size: 40px; margin: 20px; } */
+    #score { margin-top: 20px; font-size: 18px; }
+
+    #nextBtn, #downloadBtn, #toggleBtn, #ttsBtn, #hintBtn {
+        height: 50px;
+        margin-top: 20px;
+        padding: 0 20px;
+        font-size: 16px;
+    }
+</style>
 </head>
+
 <body>
-    <h2>Level 1 Korean Vocabulary</h2>
-    <button id="toggleBtn">Chinese ⇌ Korean</button>
-    <div id="question"></div>
-    <div id="answers"></div>
-    <div id="score">Answered: 0 | Score: 0% | Streak: 0</div>
-    <button id="nextBtn">Next</button>
-    <button id="downloadBtn">Download Results</button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script>
-        let vocabList = [];
-        let quizLog = [];
-        let currentQuestion;
-        let correctStreak = 0;
-        let koreanOnTop = true; // true = Korean question, false = Chinese question
+<h2>Topik 1 Korean Vocabulary</h2>
 
-        async function loadVocab() {
-            try {
-                const response = await fetch('vocab.json');
-                vocabList = await response.json();
-                generateQuestion();
-            } catch (error) {
-                console.error('Error loading vocab.json:', error);
-            }
-        }
+<button id="toggleBtn">Chinese ⇌ Korean</button>
+<button id="ttsBtn">🔊 Read Korean</button>
+<button id="hintBtn">Hint</button>
 
-        function generateQuestion() {
-            if (vocabList.length === 0) return;
-            const randomIndex = Math.floor(Math.random() * vocabList.length);
-            currentQuestion = vocabList[randomIndex];
+<div id="question1"></div>
+<div id="question2"></div>
 
-            const questionText = koreanOnTop ? currentQuestion.korean : currentQuestion.chinese;
-            const correctAnswer = koreanOnTop ? currentQuestion.chinese : currentQuestion.korean;
+<div id="answers"></div>
 
-            const answers = new Set([correctAnswer]);
-            while (answers.size < 4) {
-                const rand = koreanOnTop ? vocabList[Math.floor(Math.random() * vocabList.length)].chinese : vocabList[Math.floor(Math.random() * vocabList.length)].korean;
-                answers.add(rand);
-            }
+<div id="score">Answered: 0 | Score: 0% | Streak: 0</div>
 
-            const answerArray = Array.from(answers).sort(() => Math.random() - 0.5);
+<button id="nextBtn">Next</button>
+<button id="downloadBtn">Download Results</button>
 
-            document.getElementById("question").innerText = questionText;
-            const answersDiv = document.getElementById("answers");
-            answersDiv.innerHTML = "";
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
-            answerArray.forEach(answer => {
-                const btn = document.createElement("button");
-                btn.textContent = answer;
-                btn.onclick = () => checkAnswer(btn, answer, correctAnswer);
-                answersDiv.appendChild(btn);
-            });
-        }
+<script>
 
-        function checkAnswer(button, selectedAnswer, correctAnswer) {
-            const correct = selectedAnswer === correctAnswer;
-            [...document.querySelectorAll('#answers button')].forEach(btn => btn.disabled = true);
-            button.classList.add(correct ? 'correct' : 'wrong');
-            if (!correct) {
-                [...document.querySelectorAll('#answers button')].find(btn => btn.textContent === correctAnswer).classList.add('correct');
-            }
-            correct ? correctStreak++ : correctStreak = 0;
+let vocabList = [];
+let quizLog = [];
+let currentQuestion;
+let correctStreak = 0;
+let koreanOnTop = true;
+let answered = false;
+let hint = false;
 
-            quizLog.push({
-                question: koreanOnTop ? currentQuestion.korean : currentQuestion.chinese,
-                options: [...document.querySelectorAll('#answers button')].map(btn => btn.textContent),
-                correctAnswer,
-                selectedAnswer,
-                result: correct ? 'Correct' : 'Wrong'
-            });
+async function loadVocab() {
+    const response = await fetch("vocab.json");
+    vocabList = await response.json();
+    generateQuestion();
+}
 
-            updateScore();
-        }
+function generateQuestion() {
+    answered = false;
 
-        function updateScore() {
-            const totalAnswered = quizLog.length;
-            const correctCount = quizLog.filter(q => q.result === 'Correct').length;
-            const percent = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
-            document.getElementById('score').innerText = `Answered: ${totalAnswered} | Score: ${percent}% | Streak: ${correctStreak}`;
-        }
+    const randomIndex = Math.floor(Math.random() * vocabList.length);
+    currentQuestion = vocabList[randomIndex];
 
-        function downloadResults() {
-            const wb = XLSX.utils.book_new();
-            const ws_data = [['Question','Option1','Option2','Option3','Option4','CorrectAnswer','SelectedAnswer','Result']];
-            quizLog.forEach(q => ws_data.push([q.question, ...q.options, q.correctAnswer, q.selectedAnswer, q.result]));
-            const ws = XLSX.utils.aoa_to_sheet(ws_data);
-            XLSX.utils.book_append_sheet(wb, ws, 'Results');
-            XLSX.writeFile(wb, 'quiz_results.xlsx');
-        }
+    const questionText = koreanOnTop ? currentQuestion.korean : currentQuestion.chinese;
+    const correctAnswer = koreanOnTop ? currentQuestion.chinese : currentQuestion.korean;
 
-        document.getElementById("nextBtn").onclick = generateQuestion;
-        document.getElementById("downloadBtn").onclick = downloadResults;
-        document.getElementById("toggleBtn").onclick = () => { koreanOnTop = !koreanOnTop; generateQuestion(); };
+    if (koreanOnTop) {
+        document.getElementById("question1").innerHTML = `
+            <div style="font-size:40px; font-weight: bold;">${currentQuestion.korean}</div>
+        `;
+    } else {
+        document.getElementById("question1").innerHTML = `
+            <div style="font-size:40px; font-weight: bold;">${currentQuestion.chinese}</div>
+        `;
+    }
 
-        loadVocab();
-    </script>
+    const answers = new Set([correctAnswer]);
+    while (answers.size < 4) {
+        const rand = koreanOnTop
+            ? vocabList[Math.floor(Math.random() * vocabList.length)].chinese
+            : vocabList[Math.floor(Math.random() * vocabList.length)].korean;
+        answers.add(rand);
+    }
+
+    const answersArray = Array.from(answers).sort(() => Math.random() - 0.5);
+
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    answersArray.forEach(answer => {
+        const btn = document.createElement("button");
+
+        btn.dataset.original = answer;  // store original text
+        btn.dataset.flipped = "false";  // flip toggle flag
+
+        btn.textContent = answer;
+
+        btn.onclick = () => handleClick(btn, answer, correctAnswer);
+
+        answersDiv.appendChild(btn);
+    });
+}
+
+
+function speakKorean(text) {
+    if (!window.speechSynthesis) {
+        alert("Speech synthesis is not supported in this browser.");
+        return;
+    }
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = "ko-KR";          // Korean voice
+  utter.rate = 0.9;              // natural speed
+  utter.pitch = 1.0;
+  window.speechSynthesis.cancel(); // stop previous speech
+  window.speechSynthesis.speak(utter);
+}
+
+
+document.getElementById("ttsBtn").onclick = () => {
+    if (!currentQuestion) return;
+    if (koreanOnTop) {
+        speakKorean(currentQuestion.korean);
+    } else {
+        alert("Switch to Korean question to use speech.");
+    }
+};
+
+
+function handleClick(button, selectedAnswer, correctAnswer) {
+    // speakKorean(currentQuestion.korean);
+
+    // first click = grading
+    if (!answered) {
+        evaluateAnswer(button, selectedAnswer, correctAnswer);
+        answered = true;
+        return;
+    }
+
+    // toggle second click = flip/unflip
+    toggleFlip(button);
+
+
+}
+
+function evaluateAnswer(button, selectedAnswer, correctAnswer) {
+    const correct = selectedAnswer === correctAnswer;
+
+    if (correct) {
+        button.classList.add("correct");
+        correctStreak++;
+    } else {
+        button.classList.add("wrong");
+        correctStreak = 0;
+
+        // highlight correct answer
+        [...document.querySelectorAll("#answers button")]
+            .find(b => b.dataset.original === correctAnswer)
+            .classList.add("correct");
+    }
+
+    quizLog.push({
+        question1: koreanOnTop ? currentQuestion.korean : currentQuestion.chinese,
+        correctAnswer,
+        selectedAnswer,
+        result: correct ? "Correct" : "Wrong"
+    });
+
+    updateScore();
+}
+
+function toggleFlip(button) {
+
+    // unflip if currently flipped
+    if (button.dataset.flipped === "true") {
+        button.dataset.flipped = "false";
+        button.innerText = button.dataset.original;
+        return;
+    }
+
+    // flip to show details
+    const original = button.dataset.original;
+
+    const entry = vocabList.find(v =>
+        v.korean === original || v.chinese === original
+    );
+
+    if (!entry) return;
+
+    button.dataset.flipped = "true";
+
+    // KOREAN QUESTION MODE – show Korean + pronunciation button
+    if (koreanOnTop) {
+        button.innerHTML = `
+            <div style="font-size:20px;">${entry.korean}
+            </div>
+        `;            
+        speakKorean(entry.korean); //pronounce
+        return;
+    }
+
+    // CHINESE QUESTION MODE – show translation + explanation | pos
+    const explain = entry.explanation || "";
+    const pos = entry.pos || "";
+    speakKorean(entry.korean);
+
+    button.innerHTML = `
+        <div style="font-size:20px;">${entry.chinese}</div>
+        <div style="font-size:12px;color:black;margin-top:4px;">
+            ${explain} | ${pos}
+        </div>
+    `;
+}
+
+// function speakKorean(text) {
+//     if (!window.speechSynthesis) return;
+//     const u = new SpeechSynthesisUtterance(text);
+//     u.lang = "ko-KR";
+//     u.rate = 0.9;
+//     speechSynthesis.cancel();
+//     speechSynthesis.speak(u);
+// }
+
+function updateScore() {
+    const total = quizLog.length;
+    const correct = quizLog.filter(q => q.result === "Correct").length;
+    const percent = total ? Math.round((correct / total) * 100) : 0;
+    document.getElementById("score").innerText =
+        `Answered: ${total} | Score: ${percent}% | Streak: ${correctStreak}`;
+}
+
+function downloadResults() {
+    const wb = XLSX.utils.book_new();
+    const ws_data = [["Question","CorrectAnswer","SelectedAnswer","Result"]];
+    quizLog.forEach(q => ws_data.push([q.question1, q.correctAnswer, q.selectedAnswer, q.result]));
+    const ws = XLSX.utils.aoa_to_sheet(ws_data);
+    XLSX.utils.book_append_sheet(wb, ws, "Results");
+    XLSX.writeFile(wb, "quiz_results.xlsx");
+}
+
+document.getElementById("nextBtn").onclick = generateQuestion;
+document.getElementById("downloadBtn").onclick = downloadResults;
+document.getElementById("toggleBtn").onclick = () => { koreanOnTop = !koreanOnTop; generateQuestion(); };
+document.getElementById("hintBtn").onclick = () => {
+    hint = !hint;
+    if (hint) {
+        document.getElementById("question2").innerHTML = `
+            <div style="font-size:18px; margin-top:5px;">
+                ${currentQuestion.explanation} | ${currentQuestion.pos}
+            </div>
+        `;
+    } else {
+        document.getElementById("question2").innerHTML = "";
+    }
+};
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "enter") {
+        generateQuestion;
+    }
+});
+
+loadVocab();
+
+</script>
 </body>
 </html>
