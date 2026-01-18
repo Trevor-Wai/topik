@@ -2413,7 +2413,7 @@
   },
   {
     "korean": "답답하다",
-    "chinese": "悶",
+    "chinese": "鬱悶",
     "explanation": "가슴이",
     "pos": "형용사"
   },
@@ -6415,7 +6415,7 @@
   },
   {
     "korean": "앞쪽",
-    "chinese": "向",
+    "chinese": "前面",
     "explanation": "으로 향하다",
     "pos": "명사"
   },
@@ -6937,7 +6937,7 @@
   },
   {
     "korean": "열",
-    "chinese": "列",
+    "chinese": "十天",
     "explanation": "숫자",
     "pos": "수사·관형사"
   },
@@ -7939,7 +7939,7 @@
   },
   {
     "korean": "익숙하다",
-    "chinese": "熟練的",
+    "chinese": "熟悉",
     "explanation": "기계에",
     "pos": "형용사"
   },
@@ -8305,7 +8305,7 @@
   },
   {
     "korean": "잔",
-    "chinese": "咖啡杯",
+    "chinese": "杯 ",
     "explanation": "커피 잔",
     "pos": "명사"
   },

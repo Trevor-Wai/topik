@@ -1,8 +1,8 @@
 import csv
 import json
 
-csv_file = 'vocab.csv'
-json_file = 'vocab.json'
+csv_file = 'vocab1.csv'
+json_file = 'vocab1.json'
 
 data = []
 with open(csv_file, newline='', encoding='utf-8') as f:

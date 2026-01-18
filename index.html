@@ -107,9 +107,10 @@ function generateQuestion() {
 
     const answers = new Set([correctAnswer]);
     while (answers.size < 4) {
+        index = Math.floor(Math.random() * vocabList.length);
         const rand = koreanOnTop
-            ? vocabList[Math.floor(Math.random() * vocabList.length)].chinese
-            : vocabList[Math.floor(Math.random() * vocabList.length)].korean;
+            ? vocabList[index].chinese
+            : vocabList[index].korean;
         answers.add(rand);
     }
 
@@ -130,6 +131,9 @@ function generateQuestion() {
 
         answersDiv.appendChild(btn);
     });
+    
+    hint = !hint;
+    document.getElementById("hintBtn").click();
 }
 
 
@@ -170,7 +174,6 @@ function handleClick(button, selectedAnswer, correctAnswer) {
     // toggle second click = flip/unflip
     toggleFlip(button);
 
-
 }
 
 function evaluateAnswer(button, selectedAnswer, correctAnswer) {
@@ -191,6 +194,9 @@ function evaluateAnswer(button, selectedAnswer, correctAnswer) {
 
     if (!koreanOnTop) {
       speakKorean(button.dataset.original);
+    }
+    else{
+      speakKorean(currentQuestion.korean);
     }
 
     quizLog.push({
@@ -224,20 +230,21 @@ function toggleFlip(button) {
     button.dataset.flipped = "true";
     speakKorean(entry.korean); //pronounce
 
+    const explain = entry.explanation || "";
+    const pos = entry.pos || "";
+
     // KOREAN QUESTION MODE – show Korean + pronunciation button
     if (koreanOnTop) {
         button.innerHTML = `
-            <div style="font-size:20px;">${entry.korean}
+            <div style="font-size:20px;">${entry.korean}</div>
+            <div style="font-size:12px;color:black;margin-top:4px;">
+                ${explain} | ${pos}
             </div>
         `;            
-
         return;
     }
 
     // CHINESE QUESTION MODE – show translation + explanation | pos
-    const explain = entry.explanation || "";
-    const pos = entry.pos || "";
-
     button.innerHTML = `
         <div style="font-size:20px;">${entry.chinese}</div>
         <div style="font-size:12px;color:black;margin-top:4px;">
@@ -246,14 +253,6 @@ function toggleFlip(button) {
     `;
 }
 
-// function speakKorean(text) {
-//     if (!window.speechSynthesis) return;
-//     const u = new SpeechSynthesisUtterance(text);
-//     u.lang = "ko-KR";
-//     u.rate = 0.9;
-//     speechSynthesis.cancel();
-//     speechSynthesis.speak(u);
-// }
 
 function updateScore() {
     const total = quizLog.length;
@@ -288,9 +287,9 @@ document.getElementById("hintBtn").onclick = () => {
     }
 };
 
-document.addEventListener("keydown", (event) => {
-    if (event.key === "enter") {
-        generateQuestion;
+document.addEventListener("keydown", event => {
+    if (event.key === 'Enter') {
+        generateQuestion();
     }
 });
 
